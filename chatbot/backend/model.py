@@ -42,10 +42,6 @@ def train_and_save_model(data_path):
     X = df[features]
     y = df["loan_status"]
 
-
-
-
-
     # Standardize numerical features
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
@@ -73,15 +69,7 @@ def train_and_save_model(data_path):
 
 
 def load_model_and_predict(input_data):
-    """
-    Load the saved model, scaler, and encoders, and make predictions.
-
-    Args:
-        input_data (dict): A dictionary containing the input features.
-
-    Returns:
-        dict: A dictionary containing the prediction and probabilities.
-    """
+    
     # Load the saved model, scaler, and encoders
     model = joblib.load("loan_model.pkl")
     scaler = joblib.load("scaler.pkl")
@@ -109,21 +97,7 @@ def load_model_and_predict(input_data):
         },
     }
 
-# Example usage:
-# input_data = {
-#     "no_of_dependents": 2,
-#     "income_annum": 500000,
-#     "loan_amount": 200000,
-#     "loan_term": 360,
-#     "cibil_score": 750,
-#     "residential_assets_value": 1000000,
-#     "commercial_assets_value": 500000,
-# }
-# result = load_model_and_predict(input_data)
-# print(result)
-
-
 if __name__ == "__main__":
     # Update this path to your dataset location
-    data_path = r"C:\Users\selva\Downloads\archive (1)\loan_approval_dataset.csv"
+    data_path = r"backend/data/loan_approval_dataset.csv"  # <- put your CSV file here
     train_and_save_model(data_path)
